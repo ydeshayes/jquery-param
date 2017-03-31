@@ -25,7 +25,9 @@
                         }
                     } else if (obj && String(obj) === '[object Object]') {
                         for (key in obj) {
-                            buildParams(prefix + '[' + key + ']', obj[key]);
+                            if(obj[key]) {
+                              buildParams(prefix + '[' + key + ']', obj[key]);
+                            }
                         }
                     } else {
                         add(prefix, obj);
@@ -36,7 +38,9 @@
                     }
                 } else {
                     for (key in obj) {
-                        buildParams(key, obj[key]);
+                        if(obj[key]) {
+                          buildParams(key, obj[key]);
+                        }
                     }
                 }
                 return s;
@@ -56,4 +60,3 @@
     }
 
 }(this));
-
